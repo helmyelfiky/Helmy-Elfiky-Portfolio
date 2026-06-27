@@ -1,25 +1,27 @@
 import { motion } from 'framer-motion'
 import {
   SiHtml5, SiCss, SiJavascript, SiReact, SiTailwindcss,
-  SiNodedotjs, SiPython, SiDjango, SiOpenjdk,
-  SiMysql, SiSqlite, SiGit, SiElectron, SiDocker,
+  SiNodedotjs, SiExpress, SiPython, SiDjango, SiSocketdotio, SiOpenjdk,
+  SiMysql, SiSqlite, SiGit, SiVite, SiElectron, SiDocker,
+  SiGooglechrome,
 } from 'react-icons/si'
-import { FiDatabase, FiCheckSquare, FiCode } from 'react-icons/fi'
+import { FiDatabase, FiCheckSquare, FiCode, FiServer, FiShield, FiCloud, FiBell } from 'react-icons/fi'
 import SectionHeader from '../ui/SectionHeader'
 import { skillCategories } from '../../data/skills'
 
 const ICON_MAP = {
   SiHtml5, SiCss3: SiCss, SiJavascript, SiReact, SiTailwindcss,
-  SiNodedotjs, SiPython, SiDjango, SiJava: SiOpenjdk, SiCsharp: FiCode,
-  SiMysql, SiSqlite, SiGit, SiElectron, SiDocker, SiMicrosoftexcel: FiCode,
-  FiDatabase, FiCheckSquare, SiC: FiCode,
+  SiNodedotjs, SiExpress, SiPython, SiDjango, SiSocketdotio, SiJava: SiOpenjdk, SiCsharp: FiCode,
+  SiMysql, SiSqlite, SiGit, SiVite, SiElectron, SiDocker,
+  SiMicrosoftazure: FiCloud, SiMicrosoftexcel: FiCode, SiGooglechrome, FiBell,
+  FiDatabase, FiCheckSquare, FiCode, FiServer, FiShield, SiC: FiCode,
 }
 
 const ACCENT_COLORS = {
-  indigo: 'text-indigo-400',
-  violet: 'text-violet-400',
-  emerald: 'text-emerald-400',
-  slate: 'text-slate-400',
+  indigo: 'text-indigo-600 dark:text-indigo-400',
+  violet: 'text-violet-600 dark:text-violet-400',
+  emerald: 'text-emerald-600 dark:text-emerald-400',
+  slate: 'text-slate-600 dark:text-slate-400',
 }
 
 const containerVariants = {
@@ -36,8 +38,7 @@ function SkillItem({ item, accentColor }) {
   const Icon = ICON_MAP[item.icon] || FiCode
   return (
     <motion.div
-      className="flex flex-col items-center gap-2 p-3 rounded-xl transition-all duration-200 cursor-default group"
-      style={{ background: 'rgba(255,255,255,0.02)' }}
+      className="flex flex-col items-center gap-2 p-3 rounded-xl transition-all duration-200 cursor-default group bg-indigo-50/60 dark:bg-white/[0.03] hover:bg-indigo-100/70 dark:hover:bg-white/[0.07]"
       whileHover={{ scale: 1.05 }}
       transition={{ duration: 0.15 }}
     >

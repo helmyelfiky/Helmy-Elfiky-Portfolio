@@ -8,7 +8,7 @@ const EXPERIENCE = [
     role: 'Hardware Technical Support (USA) — Lenovo',
     company: 'IBM · Cairo, Egypt',
     description:
-      'Providing Lenovo hardware technical support for US customers while continuing to develop internal tools that improve team workflows.',
+      'Providing Lenovo hardware technical support for US customers. Built production internal tools including the Agent Notes App and Inventory Management System. Presented software solutions directly to business stakeholders.',
     type: 'work',
   },
   {
@@ -16,8 +16,7 @@ const EXPERIENCE = [
     period: 'November 2024 — February 2025',
     role: 'Software Engineer Trainee',
     company: 'United Systems Co. · Cairo, Egypt',
-    description:
-      'Built production internal tools including the Agent Notes App and Inventory Management System. Presented software solutions directly to business stakeholders.',
+    description: '',
     type: 'work',
   },
   {
@@ -27,6 +26,14 @@ const EXPERIENCE = [
     company: 'Arab Academy for Science, Technology & Maritime Transport',
     description:
       'Graduated with a focus on AI and software systems. Final year project: Voice-Based Image Caption Generator using Deep Learning (CNN + LSTM/Transformer architectures).',
+    type: 'education',
+  },
+  {
+    id: 4,
+    period: '2006 — 2019',
+    role: 'High School — IGCSE',
+    company: 'Port Said British School · Cairo, Egypt',
+    description: '',
     type: 'education',
   },
 ]
@@ -66,7 +73,7 @@ function Experience() {
                   <p className="gradient-text text-xs font-semibold uppercase tracking-widest mb-2">{item.period}</p>
                   <h3 className="text-lg font-semibold text-slate-900 dark:text-white mb-1">{item.role}</h3>
                   <p className="text-sm text-slate-500 dark:text-slate-400 mb-3">{item.company}</p>
-                  <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">{item.description}</p>
+                  {item.description && <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">{item.description}</p>}
                 </div>
               </motion.div>
             ))}

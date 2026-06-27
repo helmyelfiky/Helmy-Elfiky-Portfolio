@@ -1,13 +1,18 @@
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
+import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { FiExternalLink, FiArrowRight } from 'react-icons/fi'
 import TechBadge from './TechBadge'
+import ImageLightbox from './ImageLightbox'
 
 function HeroProjectCard({ project }) {
   const navigate = useNavigate()
+  const [fullscreenImage, setFullscreenImage] = useState(null)
+  const [showGallery, setShowGallery] = useState(false)
 
   return (
-    <motion.div
+    <>
+      <motion.div
       className="relative overflow-hidden rounded-2xl p-8 md:p-10 mb-12"
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
@@ -40,6 +45,14 @@ function HeroProjectCard({ project }) {
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" /> Live
             </span>
           </div>
+
+          {project.logo && (
+            <img 
+              src={project.logo} 
+              alt={`${project.name} logo`} 
+              className="w-16 h-16 md:w-20 md:h-20 object-contain mb-5 drop-shadow-xl"
+            />
+          )}
 
           <h3 className="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-2">{project.name}</h3>
           <p className="text-slate-500 dark:text-slate-400 text-base mb-4">{project.tagline}</p>
@@ -75,6 +88,14 @@ function HeroProjectCard({ project }) {
             >
               <FiExternalLink size={14} /> Live Demo
             </a>
+            {project.screenshots && project.screenshots.length > 0 && (
+              <button
+                onClick={() => setShowGallery(!showGallery)}
+                className="btn-secondary text-sm dark:text-slate-100 text-slate-900"
+              >
+                {showGallery ? 'Hide Gallery' : 'View Gallery'}
+              </button>
+            )}
           </div>
         </div>
 
@@ -113,7 +134,53 @@ function HeroProjectCard({ project }) {
           )}
         </div>
       </div>
+
+      {/* Screenshots Gallery below the grid */}
+      <AnimatePresence>
+        {showGallery && project.screenshots && project.screenshots.length > 0 && (
+          <motion.div 
+            initial={{ opacity: 0, height: 0, marginTop: 0, paddingTop: 0, borderTopColor: 'transparent' }}
+            animate={{ opacity: 1, height: 'auto', marginTop: 48, paddingTop: 32, borderTopColor: 'rgba(226,232,240,0.1)' }}
+            exit={{ opacity: 0, height: 0, marginTop: 0, paddingTop: 0, borderTopColor: 'transparent' }}
+            transition={{ duration: 0.3, ease: 'easeInOut' }}
+            className="relative z-10 border-t overflow-hidden"
+          >
+            <h3 className="text-sm font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-4">Project Gallery</h3>
+            <div 
+              className="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory rounded-xl custom-scrollbar"
+              style={{
+                scrollbarWidth: 'thin',
+                scrollbarColor: 'rgba(99,102,241,0.3) transparent',
+              }}
+            >
+              {project.screenshots.map((src, i) => (
+                <div 
+                  key={i} 
+                  className="min-w-[85%] md:min-w-[60%] lg:min-w-[45%] flex-shrink-0 snap-center rounded-xl overflow-hidden border border-indigo-500/10 bg-slate-800/40 relative group flex items-center justify-center p-2 cursor-pointer"
+                  onClick={() => setFullscreenImage(src)}
+                >
+                  <img 
+                    src={src} 
+                    alt={`${project.name} screenshot ${i + 1}`} 
+                    className="w-full h-auto max-h-48 md:max-h-64 object-contain group-hover:scale-[1.02] transition-transform duration-500 rounded-lg"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors flex items-center justify-center pointer-events-none rounded-xl">
+                    <span className="opacity-0 group-hover:opacity-100 bg-black/60 text-white text-xs px-3 py-1.5 rounded-full transition-opacity duration-300 backdrop-blur-sm">Click to expand</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
     </motion.div>
+
+    {fullscreenImage && (
+      <ImageLightbox src={fullscreenImage} onClose={() => setFullscreenImage(null)} />
+    )}
+    </>
   )
 }
 

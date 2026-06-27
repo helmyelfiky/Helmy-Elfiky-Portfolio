@@ -44,7 +44,15 @@ function ProjectCard({ project, onClick, featured = false }) {
           border: '1px solid rgba(99,102,241,0.15)',
         }}
       >
-        <span className="gradient-text font-bold text-lg text-center px-4">{project.name}</span>
+        {project.logo ? (
+          <img 
+            src={project.logo} 
+            alt={`${project.name} logo`} 
+            className="w-24 h-24 object-contain drop-shadow-lg group-hover:scale-110 transition-transform duration-500" 
+          />
+        ) : (
+          <span className="gradient-text font-bold text-lg text-center px-4">{project.name}</span>
+        )}
         {/* Status badge top-right */}
         <div className="absolute top-3 right-3">
           <StatusBadge status={project.status} />

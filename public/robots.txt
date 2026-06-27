@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /archive
 
-Sitemap: https://helmyelfiky.netlify.app/sitemap.xml
+Sitemap: https://helmyelfiky-portfolio.netlify.app/

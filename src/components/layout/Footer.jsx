@@ -46,7 +46,7 @@ function Footer() {
         </div>
 
         <p className="text-xs text-slate-500 dark:text-slate-500">
-          © 2025 Helmy Elfiky · Built with React &amp; ❤️
+          © 2026 Helmy Elfiky · Built with React &amp; ❤️
         </p>
       </div>
     </footer>

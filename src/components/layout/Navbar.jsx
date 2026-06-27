@@ -60,7 +60,7 @@ function Navbar() {
       <header
         className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${scrolled || mobileOpen ? 'backdrop-blur-md' : ''}`}
         style={scrolled || mobileOpen
-          ? { background: 'rgba(7,11,20,0.85)', borderBottom: '1px solid rgba(255,255,255,0.06)' }
+          ? { background: 'var(--navbar-bg)', borderBottom: '1px solid var(--navbar-border)' }
           : { background: 'transparent' }
         }
       >
@@ -88,8 +88,8 @@ function Navbar() {
                   onClick={() => scrollTo(link.id)}
                   className={`text-sm font-medium transition-colors duration-200 relative pb-0.5 ${
                     activeSection === link.id
-                      ? 'text-white'
-                      : 'text-slate-400 hover:text-white'
+                      ? 'text-slate-900 dark:text-white'
+                      : 'text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
                   }`}
                 >
                   {link.label}
@@ -111,7 +111,7 @@ function Navbar() {
               <button
                 onClick={() => setMobileOpen(v => !v)}
                 aria-label="Toggle menu"
-                className="md:hidden glass w-10 h-10 rounded-full flex items-center justify-center text-slate-300"
+                className="md:hidden glass w-10 h-10 rounded-full flex items-center justify-center text-slate-600 dark:text-slate-300"
               >
                 {mobileOpen ? <FiX size={18} /> : <FiMenu size={18} />}
               </button>
@@ -129,15 +129,15 @@ function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.2 }}
-            style={{ background: 'rgba(7,11,20,0.95)', backdropFilter: 'blur(16px)', borderBottom: '1px solid rgba(255,255,255,0.06)' }}
+            style={{ background: 'var(--navbar-bg)', backdropFilter: 'blur(16px)', borderBottom: '1px solid var(--navbar-border)' }}
           >
             <nav className="flex flex-col py-4 px-4">
               {NAV_LINKS.map(link => (
                 <button
                   key={link.id}
                   onClick={() => scrollTo(link.id)}
-                  className={`text-left py-3 text-sm font-medium border-b border-white/5 last:border-0 transition-colors ${
-                    activeSection === link.id ? 'gradient-text' : 'text-slate-400 hover:text-white'
+                  className={`text-left py-3 text-sm font-medium border-b border-black/5 dark:border-white/5 last:border-0 transition-colors ${
+                    activeSection === link.id ? 'gradient-text' : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
                   }`}
                 >
                   {link.label}

@@ -1,7 +1,8 @@
 import { motion, AnimatePresence } from 'framer-motion'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { FiX, FiGithub, FiExternalLink } from 'react-icons/fi'
 import TechBadge from './TechBadge'
+import ImageLightbox from './ImageLightbox'
 
 function StatusBadge({ status }) {
   if (status === 'completed') return <span className="text-xs font-semibold px-2 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400">Completed</span>
@@ -10,6 +11,8 @@ function StatusBadge({ status }) {
 }
 
 function ProjectModal({ project, onClose }) {
+  const [fullscreenImage, setFullscreenImage] = useState(null)
+
   useEffect(() => {
     const handleKey = (e) => { if (e.key === 'Escape') onClose() }
     document.addEventListener('keydown', handleKey)
@@ -84,6 +87,38 @@ function ProjectModal({ project, onClose }) {
               {project.shortDescription}
             </p>
 
+            {/* Screenshots Gallery */}
+            {project.screenshots && project.screenshots.length > 0 && (
+              <div className="mb-8">
+                <h3 className="text-sm font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-4">Gallery</h3>
+                <div 
+                  className="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory rounded-xl custom-scrollbar"
+                  style={{
+                    scrollbarWidth: 'thin',
+                    scrollbarColor: 'rgba(99,102,241,0.3) transparent',
+                  }}
+                >
+                  {project.screenshots.map((src, i) => (
+                    <div 
+                      key={i} 
+                      className="min-w-[85%] md:min-w-[70%] flex-shrink-0 snap-center rounded-xl overflow-hidden border border-indigo-500/10 bg-slate-800/40 relative group flex items-center justify-center p-2 cursor-pointer"
+                      onClick={() => setFullscreenImage(src)}
+                    >
+                      <img 
+                        src={src} 
+                        alt={`${project.name} screenshot ${i + 1}`} 
+                        className="w-full h-auto max-h-48 md:max-h-64 lg:max-h-80 object-contain group-hover:scale-[1.02] transition-transform duration-500 rounded-lg"
+                        loading="lazy"
+                      />
+                      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors flex items-center justify-center pointer-events-none rounded-xl">
+                        <span className="opacity-0 group-hover:opacity-100 bg-black/60 text-white text-xs px-3 py-1.5 rounded-full transition-opacity duration-300 backdrop-blur-sm">Click to expand</span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
             {/* Key Features */}
             {project.keyFeatures && project.keyFeatures.length > 0 && (
               <div className="mb-6">
@@ -96,23 +131,6 @@ function ProjectModal({ project, onClose }) {
                     </li>
                   ))}
                 </ul>
-              </div>
-            )}
-
-            {/* Technical highlight */}
-            {project.technicalHighlight && (
-              <div className="mb-6">
-                <h3 className="text-sm font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-3">Technical Highlight</h3>
-                <div
-                  className="rounded-lg p-4 text-xs leading-relaxed text-slate-300"
-                  style={{
-                    background: 'rgba(0,0,0,0.3)',
-                    border: '1px solid rgba(99,102,241,0.2)',
-                    fontFamily: "'Fira Code', 'Courier New', monospace",
-                  }}
-                >
-                  {project.technicalHighlight}
-                </div>
               </div>
             )}
 
@@ -170,6 +188,10 @@ function ProjectModal({ project, onClose }) {
           </div>
         </motion.div>
       </motion.div>
+      
+      {fullscreenImage && (
+        <ImageLightbox src={fullscreenImage} onClose={() => setFullscreenImage(null)} />
+      )}
     </AnimatePresence>
   )
 }

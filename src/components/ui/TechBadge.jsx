@@ -1,13 +1,13 @@
 function TechBadge({ label, variant = 'default', small = false }) {
   const variantStyles = {
-    default: 'bg-indigo-500/10 border-indigo-500/30 text-indigo-300',
-    frontend: 'bg-indigo-500/10 border-indigo-500/30 text-indigo-300',
-    backend: 'bg-violet-500/10 border-violet-500/30 text-violet-300',
-    database: 'bg-emerald-500/10 border-emerald-500/30 text-emerald-300',
-    other: 'bg-slate-500/10 border-slate-400/30 text-slate-300',
-    live: 'bg-emerald-500/10 border-emerald-500/30 text-emerald-400',
-    azure: 'bg-blue-500/10 border-blue-500/30 text-blue-300',
-    internal: 'bg-amber-500/10 border-amber-500/30 text-amber-300',
+    default: 'bg-indigo-500/10 border-indigo-500/30 text-indigo-700 dark:text-indigo-300',
+    frontend: 'bg-indigo-500/10 border-indigo-500/30 text-indigo-700 dark:text-indigo-300',
+    backend: 'bg-violet-500/10 border-violet-500/30 text-violet-700 dark:text-violet-300',
+    database: 'bg-emerald-500/10 border-emerald-500/30 text-emerald-700 dark:text-emerald-300',
+    other: 'bg-slate-500/10 border-slate-400/30 text-slate-600 dark:text-slate-300',
+    live: 'bg-emerald-500/10 border-emerald-500/30 text-emerald-700 dark:text-emerald-400',
+    azure: 'bg-blue-500/10 border-blue-500/30 text-blue-700 dark:text-blue-300',
+    internal: 'bg-amber-500/10 border-amber-500/30 text-amber-700 dark:text-amber-300',
   }
 
   return (

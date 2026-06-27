@@ -148,8 +148,7 @@ function Hero() {
           <button onClick={scrollToProjects} className="btn-primary">
             View My Work <FiArrowRight size={16} />
           </button>
-          {/* TODO: Replace href="#" with actual CV PDF link */}
-          <a href="#" className="btn-secondary dark:text-slate-100 text-slate-900">
+          <a href="/Helmy_Elfiky_CV.pdf" download className="btn-secondary dark:text-slate-100 text-slate-900">
             <FiDownload size={16} /> Download CV
           </a>
         </motion.div>

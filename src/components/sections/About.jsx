@@ -49,11 +49,10 @@ function About() {
                 }}
               >
                 <div
-                  className="w-full h-full rounded-2xl flex flex-col items-center justify-center"
-                  style={{ background: 'var(--inner-bg, #0d1120)' }}
+                  className="w-full h-full rounded-[18px] flex flex-col items-center justify-center overflow-hidden"
+                  style={{ background: 'var(--inner-bg)' }}
                 >
-                  <span className="gradient-text text-5xl font-extrabold mb-2">HE</span>
-                  <span className="text-xs text-slate-500 dark:text-slate-400 uppercase tracking-widest">Photo Coming Soon</span>
+                  <img src="/screenshots/my-photo.png" alt="Helmy El-Fiky" className="w-full h-full object-cover" />
                 </div>
               </div>
             </div>

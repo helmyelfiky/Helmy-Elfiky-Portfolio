@@ -17,6 +17,8 @@ export const mainProjects = [
     slug: 'omni-portal',
     name: 'Omni Portal',
     tagline: 'Multi-system ops platform for call-center break scheduling and QA scoring.',
+    logo: '/images/omni-portal-logo.png',
+    screenshots: ['/screenshots/omni-1.png', '/screenshots/omni-2.png'],
     shortDescription:
       'A real-time workforce operations portal that schedules agent breaks, enforces capacity and shift rules, and runs a full QA call-scoring workflow. Built for call-center team leads and admins managing dozens of agents across overnight shifts.',
     fullDescription: `Omni Portal is a multi-system internal platform built around a launchpad that hosts three distinct applications — a Break Management system, a QA call-auditing system, and an Employees/RBAC administration system — under one authenticated React shell.
@@ -97,6 +99,13 @@ Technically it is a Node.js/Express + SQLite backend with a strict routes→cont
     slug: 'agent-call-notes',
     name: 'Agent Call Notes',
     tagline: 'Desktop support tool streamlining technical support workflows for Lenovo agents.',
+    logo: '/images/agents-notes-logo.ico',
+    screenshots: [
+      '/screenshots/agent-notes-1.png',
+      '/screenshots/agent-notes-2.png',
+      '/screenshots/agent-notes-3.png',
+      '/screenshots/agent-notes-4.png',
+    ],
     shortDescription:
       'An Electron-based desktop application built for technical support agents handling Lenovo hardware cases. Combines note-taking, analytics tracking, callback scheduling, and SSR workflow management into a unified productivity tool.',
     fullDescription: `Agent Call Notes is a comprehensive desktop application designed specifically for technical support agents managing Lenovo hardware support cases at IBM. The application addresses the complexity of juggling multiple systems, tracking case details, managing callbacks across time zones, and maintaining consistent documentation standards during high-volume support operations.
@@ -139,6 +148,8 @@ The solution implements a modular ES6 architecture with 23+ feature modules coor
     slug: 'enterprise-inventory-management',
     name: 'Enterprise Inventory Management',
     tagline: 'Desktop app for tracking IT hardware with Excel integration.',
+    logo: '/images/Inventory-management-logo.ico',
+    screenshots: ['/screenshots/inventory-1.png'],
     shortDescription:
       'A secure Electron-based desktop application for managing enterprise IT inventory including MIFI devices, headsets, monitors, and laptops. Features advanced replacement tracking, bulk Excel import/export, and offline-first SQLite storage.',
     fullDescription: `Enterprise Inventory Management System addresses the challenge of tracking thousands of IT assets across an organization without relying on cloud infrastructure. The solution implements a desktop-first architecture using Electron.js with a secure IPC bridge between the renderer and main processes.
@@ -194,7 +205,7 @@ The backend leverages better-sqlite3 for synchronous database operations capable
       devops: ['Vite'],
       other: ['SheetJS (xlsx)', 'Axios'],
     },
-    status: 'in-progress',
+    status: 'completed',
     complexity: 'intermediate',
     tier: 3,
     isHero: false,
@@ -202,7 +213,7 @@ The backend leverages better-sqlite3 for synchronous database operations capable
     tags: ['React', 'Recharts', 'Tailwind CSS', 'Vite', 'SheetJS'],
     liveUrl: null,
     githubUrl: null,
-    isInternalTool: false,
+    isInternalTool: true,
   },
 
   {
@@ -242,6 +253,15 @@ export const archiveProjects = [
     slug: 'personal-expense-tracker',
     name: 'Personal Expense Tracker',
     tagline: 'Multi-user financial management with family account support.',
+    screenshots: [
+      '/screenshots/exp-1.png',
+      '/screenshots/exp-2.png',
+      '/screenshots/exp-3.png',
+      '/screenshots/exp-4.png',
+      '/screenshots/exp-5.png',
+      '/screenshots/exp-6.png',
+      '/screenshots/exp-7.png',
+    ],
     shortDescription:
       'A Django-based web application for tracking personal and family finances with real-time balance calculations and Chart.js analytics. Supports individual and family account types with role-based access.',
     techStack: {
